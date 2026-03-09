@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hasnain | Portfolio</title>
+<link rel="icon" href="Images/Hasnain logo.png">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+:root{
+ --bg:#f4f6fb;
+ --card:#ffffff;
+ --text:#0f172a;
+ --primary:#2563eb;
+ --secondary:#38bdf8;
+}
+.dark{
+ --bg:#0b1220;
+ --card:#111827;
+ --text:#e5e7eb;
+ --primary:#60a5fa;
+ --secondary:#22d3ee;
+}
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+ font-family:"Segoe UI", Roboto, Arial, sans-serif;
+}
+body{
+ background:var(--bg);
+ color:var(--text);
+ transition:.4s;
+}
+
+/* NAVBAR */
+nav{
+ position:fixed;
+ top:15px;
+ left:50%;
+ transform:translateX(-50%);
+ width:92%;
+ padding:14px 30px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ background:rgba(255,255,255,.8);
+ backdrop-filter:blur(14px);
+ border-radius:50px;
+ box-shadow:0 10px 30px rgba(0,0,0,.15);
+ z-index:1000;
+}
+.dark nav{background:rgba(15,23,42,.9)}
+nav ul{
+ display:flex;
+ gap:25px;
+ list-style:none;
+}
+nav a{
+ text-decoration:none;
+ color:var(--text);
+ font-weight:500;
+}
+nav a:hover{color:var(--primary)}
+.toggle{
+ padding:8px 18px;
+ border-radius:30px;
+ background:linear-gradient(45deg,var(--primary),var(--secondary));
+ color:white;
+ font-weight:600;
+ cursor:pointer;
+}
+
+/* SECTIONS */
+section{
+ min-height:100vh;
+ padding:120px 40px;
+}
+.container{
+ max-width:1100px;
+ margin:auto;
+}
+
+/* HERO */
+.hero{
+ text-align:center;
+}
+.hero img{
+ width:170px;
+ height:170px;
+ border-radius:50%;
+ border:5px solid var(--primary);
+ box-shadow:0 20px 40px rgba(0,0,0,.3);
+}
+.hero h1{
+ font-size:52px;
+ margin-top:20px;
+}
+.hero h2{
+ margin-top:10px;
+ color:var(--primary);
+ height:32px;
+}
+
+/* CARD */
+.card{
+ background:var(--card);
+ padding:30px;
+ border-radius:20px;
+ box-shadow:0 15px 40px rgba(0,0,0,.1);
+ margin-bottom:40px;
+ opacity:0;
+ transform:translateY(40px);
+ transition:.8s;
+}
+.card.show{
+ opacity:1;
+ transform:none;
+}
+.section-title{
+ color:var(--primary);
+ margin-bottom:15px;
+}
+
+/* ABOUT */
+.about{
+ display:grid;
+ grid-template-columns:1fr 1.2fr;
+ gap:30px;
+ align-items:center;
+}
+.about img{
+ width:100%;
+ border-radius:18px;
+}
+
+/* SKILLS */
+.skills{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:15px;
+}
+.skill{
+ padding:14px;
+ border-radius:12px;
+ background:rgba(99,102,241,.1);
+ font-weight:500;
+}
+
+/* ===== IMPROVED PROJECT SECTION ===== */
+.projects-grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+ gap:30px;
+}
+
+.project-card{
+ background:var(--card);
+ border-radius:22px;
+ box-shadow:0 20px 45px rgba(0,0,0,.12);
+ overflow:hidden;
+ transition:.4s;
+}
+
+.project-card:hover{
+ transform:translateY(-10px);
+}
+
+.project-card img{
+ width:100%;
+ height:220px;
+ object-fit:cover;
+}
+
+.project-content{
+ padding:25px;
+}
+
+.project-content h3{
+ font-size:24px;
+ margin-bottom:10px;
+}
+
+.project-content p{
+ opacity:.85;
+ line-height:1.6;
+ margin-bottom:15px;
+}
+
+.tech-stack{
+ display:flex;
+ flex-wrap:wrap;
+ gap:10px;
+ margin-bottom:20px;
+}
+
+.tech-stack span{
+ background:rgba(99,102,241,.15);
+ padding:6px 14px;
+ border-radius:20px;
+ font-size:14px;
+ font-weight:500;
+}
+
+.project-links{
+ display:flex;
+ gap:15px;
+}
+
+.project-links a{
+ flex:1;
+ text-align:center;
+ padding:12px;
+ border-radius:30px;
+ text-decoration:none;
+ font-weight:600;
+ color:white;
+ background:linear-gradient(45deg,var(--primary),var(--secondary));
+}
+
+/* CONTACT */
+.contact{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:30px;
+ align-items:center;
+}
+.contact img{
+ width:100%;
+ border-radius:20px;
+ box-shadow:0 20px 40px rgba(0,0,0,.2);
+}
+input,textarea{
+ width:100%;
+ padding:14px;
+ margin-top:10px;
+ border-radius:10px;
+ border:1px solid #cbd5e1;
+ background:transparent;
+ color:var(--text);
+}
+button{
+ margin-top:15px;
+ padding:14px;
+ width:100%;
+ border:none;
+ border-radius:30px;
+ background:linear-gradient(45deg,var(--primary),var(--secondary));
+ color:white;
+ font-weight:600;
+ cursor:pointer;
+}
+
+/* FLOATING SOCIAL */
+.social{
+ position:fixed;
+ right:20px;
+ top:40%;
+ display:flex;
+ flex-direction:column;
+ gap:14px;
+ z-index:1000;
+}
+.social a{
+ width:45px;
+ height:45px;
+ border-radius:50%;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ color:white;
+ font-size:20px;
+ text-decoration:none;
+ box-shadow:0 10px 25px rgba(0,0,0,.3);
+ transition:.3s;
+}
+.social a:hover{
+ transform:scale(1.1);
+}
+.ig{background:#E1306C}
+.tw{background:#1DA1F2}
+.fb{background:#1877F2}
+
+footer{
+ text-align:center;
+ padding:30px;
+ opacity:.7;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:850px){
+ .about,.contact{
+  grid-template-columns:1fr;
+ }
+} 
+
+/* Mobile */
+@media(max-width:600px){
+ nav ul{display:none;}
+ .hero img{width:130px;height:130px;}
+ .about,.contact{grid-template-columns:1fr;}
+ .projects-grid{grid-template-columns:1fr;}
+}
+
+/* Tablet / iPad */
+@media(min-width:601px) and (max-width:1024px){
+ .contact{grid-template-columns:1fr;}
+ .projects-grid{grid-template-columns:repeat(2,1fr);}
+}
+
+/* Large Screens */
+@media(min-width:1440px){
+ .container{max-width:1300px;}
+ .projects-grid{grid-template-columns:repeat(3,1fr);}
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+ <h2>HASNAIN</h2>
+ <ul>
+  <li><a href="#home">Home</a></li>
+  <li><a href="#about">About</a></li>
+  <li><a href="#skills">Skills</a></li>
+  <li><a href="#projects">Projects</a></li>
+  <li><a href="#contact">Contact</a></li>
+ </ul>
+ <div class="toggle" onclick="toggleMode()">Day / Night</div>
+</nav>
+
+<section id="home" class="hero">
+ <img src="Images/Hasnain-AI_2.jpeg">
+ <h1>Hi, I'm Hasnain</h1>
+ <h2 id="typing"></h2>
+</section>
+
+<section id="about">
+ <div class="container card">
+  <h2 class="section-title">About Me</h2>
+  <div class="about">
+   <img src="Images/about me.png">
+   <p>
+    I am a passionate Frontend Developer who loves building modern,
+    fast and interactive websites using clean UI and smooth animations.
+   </p>
+  </div>
+ </div>
+</section>
+
+<section id="skills">
+ <div class="container card">
+  <h2 class="section-title">Skills</h2>
+  <div class="skills">
+   <div class="skill">HTML5</div>
+   <div class="skill">CSS3</div>
+   <div class="skill">JavaScript</div>
+   <div class="skill">Responsive Design</div>
+   <div class="skill">UI / UX Design</div>
+   <div class="skill">Git & GitHub</div>
+  </div>
+ </div>
+</section>
+
+<!-- IMPROVED PROJECT SECTION -->
+<section id="projects">
+ <div class="container card">
+  <h2 class="section-title">Projects</h2>
+
+  <div class="projects-grid">
+   <div class="project-card">
+    <img src="Images/project.png">
+    <div class="project-content">
+     <h3>Food Website</h3>
+     <p>
+      Developed a fully responsive food website featuring organized food
+      categories, engaging visuals, and an intuitive user experience to
+      enhance food discovery.
+     </p>
+
+     <div class="tech-stack">
+      <span>HTML5</span>
+      <span>CSS3</span>
+      <span>JavaScript</span>
+      <span>Responsive Design</span>
+     </div>
+
+     <div class="project-links">
+      <a href="file:///C:/Users/vikash/Desktop/Learn/RayanWebD/Project%20file/Food%20Website/index.html" target="_blank">Live Demo</a>
+      <a href="view-source:file:///C:/Users/vikash/Desktop/Learn/RayanWebD/Project%20file/Food%20Website/index.html" target="_blank">Source Code</a>
+     </div>
+    </div>
+   </div>
+  </div>
+
+ </div>
+</section>
+
+<section id="contact">
+ <div class="container card">
+  <h2 class="section-title">Contact</h2>
+  <div class="contact">
+   <img src="Images/contact me.png">
+   <div>
+    <input type="text" placeholder="Your Name">
+    <input type="text" placeholder="Subject">
+    <textarea rows="4" placeholder="Message"></textarea>
+    <button>Send Message</button>
+   </div>
+  </div>
+ </div>
+</section>
+
+<div class="social">
+ <a href="https://instagram.com/qtube.ig/" class="ig" target="_blank"><i class="fab fa-instagram"></i></a>
+ <a href="https://twitter.com/" class="tw" target="_blank"><i class="fab fa-x-twitter"></i></a>
+ <a href="https://facebook.com/" class="fb" target="_blank"><i class="fab fa-facebook-f"></i></a>
+</div>
+
+<footer>© 2026 Hasnain | Portfolio</footer>
+
+<script>
+function toggleMode(){
+ document.body.classList.toggle('dark');
+}
+
+/* typing animation */
+const words=["Frontend Developer","UI Designer","Web Enthusiast"];
+let i=0,j=0,del=false;
+
+function typing(){
+ let current=words[i];
+ if(!del){
+  document.getElementById("typing").innerText=current.slice(0,++j);
+  if(j===current.length) del=true;
+ }else{
+  document.getElementById("typing").innerText=current.slice(0,--j);
+  if(j===0){del=false;i=(i+1)%words.length;}
+ }
+ setTimeout(typing,120);
+}
+typing();
+
+/* scroll animation */
+document.querySelectorAll('.card').forEach(card=>{
+ window.addEventListener('scroll',()=>{
+  if(card.getBoundingClientRect().top<innerHeight-100){
+   card.classList.add('show');
+  }
+ });
+});
+</script>
+
+</body>
+</html>
